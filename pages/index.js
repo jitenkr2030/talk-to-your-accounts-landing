@@ -82,15 +82,28 @@ function TestimonialCard({ name, role, company, quote, delay }) {
 export default function Home({ releases, latestVersion }) {
   // Parse GitHub releases for download links
   const getDownloadLink = (extension) => {
-    if (!releases?.assets) return '#';
+    if (!releases?.assets) return null;
     const asset = releases.assets.find(a => a.name.toLowerCase().endsWith(extension));
-    return asset?.browser_download_url || '#';
+    return asset?.browser_download_url || null;
   };
 
   const windowsUrl = getDownloadLink('.exe');
   const macUrl = getDownloadLink('.dmg');
   const linuxDebUrl = getDownloadLink('.deb');
   const linuxAppImageUrl = getDownloadLink('.appimage');
+
+  // Check which platforms are available
+  const platforms = {
+    windows: !!windowsUrl,
+    macos: !!macUrl,
+    linuxDeb: !!linuxDebUrl,
+    linuxAppImage: !!linuxAppImageUrl
+  };
+
+  const hasWindows = platforms.windows;
+  const hasMacOS = platforms.macos;
+  const hasLinux = platforms.linuxDeb || platforms.linuxAppImage;
+  const hasAnyDownload = hasWindows || hasMacOS || hasLinux;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
@@ -158,11 +171,11 @@ export default function Home({ releases, latestVersion }) {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a 
-                  href="#download"
+                  href={hasWindows ? '#download' : 'https://github.com/jitenkr2030/Talk-to-Your-Accounts'}
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-600 text-white font-bold rounded-xl hover:from-primary-600 hover:to-accent-700 transition-all shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40"
                 >
                   <Download className="w-5 h-5" />
-                  Download Free
+                  {hasWindows ? 'Download Free' : 'Learn More'}
                   <ArrowRight className="w-5 h-5" />
                 </a>
                 <a 
@@ -189,6 +202,12 @@ export default function Home({ releases, latestVersion }) {
                   <CheckCircle2 className="w-5 h-5 text-green-500" />
                   GST Ready
                 </div>
+                {hasWindows && (
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-blue-500" />
+                    Windows Available
+                  </div>
+                )}
               </div>
             </div>
 
