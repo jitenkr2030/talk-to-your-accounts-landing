@@ -18,7 +18,11 @@ import {
   MessageSquare,
   TrendingUp,
   Clock,
-  Building2
+  Building2,
+  Scan,
+  Check,
+  Receipt,
+  Voice
 } from 'lucide-react';
 
 // Feature Card Component
@@ -128,7 +132,8 @@ export default function Home({ releases, latestVersion }) {
             </div>
             
             <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-slate-600 hover:text-primary-600 transition-colors">Features</a>
+              <a href="#core-features" className="text-slate-600 hover:text-primary-600 transition-colors">Features</a>
+              <a href="#features" className="text-slate-600 hover:text-primary-600 transition-colors">All Features</a>
               <a href="#download" className="text-slate-600 hover:text-primary-600 transition-colors">Download</a>
               <a href="https://github.com/jitenkr2030/Talk-to-Your-Accounts" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-primary-600 transition-colors">GitHub</a>
               <a 
@@ -166,7 +171,7 @@ export default function Home({ releases, latestVersion }) {
               
               <p className="text-lg sm:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0">
                 The AI-powered desktop accountant that listens, analyzes, and manages your business finances. 
-                GST compliant, offline-first, and incredibly intuitive.
+                Features <span className="font-semibold text-primary-600">Voice Reconciliation</span> and <span className="font-semibold text-primary-600">Invoice Scanning</span> for effortless accounting.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -192,15 +197,15 @@ export default function Home({ releases, latestVersion }) {
               <div className="mt-8 flex items-center gap-6 justify-center lg:justify-start text-sm text-slate-500">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-green-500" />
+                  Voice Reconciliation
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-green-500" />
+                  Invoice Scanning
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-green-500" />
                   Free & Open Source
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  No Internet Required
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  GST Ready
                 </div>
                 {hasWindows && (
                   <div className="flex items-center gap-2">
@@ -255,6 +260,207 @@ export default function Home({ releases, latestVersion }) {
         </div>
       </section>
 
+      {/* Core Features Section - Voice Reconciliation & Invoice Scanning */}
+      <section id="core-features" className="py-20 px-4 bg-gradient-to-b from-slate-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full text-primary-700 text-sm font-medium mb-6">
+              <Zap className="w-4 h-4" />
+              New Features
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+              Two Powerful Features to Supercharge Your Accounting
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Experience the future of accounting with our two flagship features designed to save you hours of manual work.
+            </p>
+          </div>
+
+          {/* Voice Reconciliation Feature */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+            <div className="order-2 lg:order-1">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-600 rounded-3xl blur-2xl opacity-20" />
+                <div className="relative bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+                  {/* Mock Voice Reconciliation Interface */}
+                  <div className="bg-slate-900 px-4 py-3 flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-400 animate-pulse" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                    <div className="w-3 h-3 rounded-full bg-green-400" />
+                    <span className="ml-4 text-white/80 text-sm">Voice Reconciliation</span>
+                  </div>
+                  <div className="p-6 space-y-4">
+                    {/* Voice Command Display */}
+                    <div className="flex items-center gap-3 p-4 bg-primary-50 rounded-xl border border-primary-100">
+                      <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center">
+                        <Mic className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-slate-900">Voice Command</p>
+                        <p className="text-xs text-slate-500">"Reconcile my bank statement for March"</p>
+                      </div>
+                    </div>
+                    {/* Reconciliation Progress */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-slate-600">Reconciling transactions...</span>
+                        <span className="text-primary-600 font-medium">67%</span>
+                      </div>
+                      <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transition-all duration-500" style={{ width: '67%' }} />
+                      </div>
+                    </div>
+                    {/* Matched Items */}
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-sm text-green-600">
+                        <Check className="w-4 h-4" />
+                        <span className="font-medium">12 transactions matched</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-amber-600">
+                        <AlertCircle className="w-4 h-4" />
+                        <span className="font-medium">3 transactions need review</span>
+                      </div>
+                    </div>
+                    {/* Action Button */}
+                    <button className="w-full py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-xl hover:from-primary-600 hover:to-primary-700 transition-all">
+                      Complete Reconciliation
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 rounded-lg text-primary-700 text-sm font-medium mb-4">
+                <Voice className="w-4 h-4" />
+                Voice Reconciliation
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+                Reconcile Accounts with Your Voice
+              </h3>
+              <p className="text-lg text-slate-600 mb-6">
+                Stop spending hours manually matching bank statements with your books. Our Voice Reconciliation feature uses AI to understand your natural voice commands and automatically reconcile transactions.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-slate-700">Natural voice commands like "Reconcile my bank statement"</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-slate-700">Automatic matching of bank transactions with ledger entries</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-slate-700">Smart suggestions for unmatched transactions</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-slate-700">Detailed reconciliation reports with one click</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Invoice Scanning Feature */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent-100 rounded-lg text-accent-700 text-sm font-medium mb-4">
+                <Receipt className="w-4 h-4" />
+                Invoice Scanning
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+                Scan Invoices and Capture Data Instantly
+              </h3>
+              <p className="text-lg text-slate-600 mb-6">
+                Transform paper invoices into digital data within seconds. Simply point your camera or upload documents, and let our AI extract all the important details automatically.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-slate-700">Capture invoices via camera or upload scanned documents</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-slate-700">Automatic GST details extraction (GSTIN, HSN codes, amounts)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-slate-700">Instant categorization and ledger entry suggestions</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-slate-700">Bulk scanning support for multiple invoices</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-accent-500 to-primary-600 rounded-3xl blur-2xl opacity-20" />
+                <div className="relative bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+                  {/* Mock Invoice Scanning Interface */}
+                  <div className="bg-slate-900 px-4 py-3 flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-400" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                    <div className="w-3 h-3 rounded-full bg-green-400" />
+                    <span className="ml-4 text-white/80 text-sm">Invoice Scanner</span>
+                  </div>
+                  <div className="p-6 space-y-4">
+                    {/* Upload Area */}
+                    <div className="border-2 border-dashed border-slate-200 rounded-xl p-6 text-center hover:border-primary-300 transition-colors cursor-pointer">
+                      <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <Scan className="w-6 h-6 text-primary-600" />
+                      </div>
+                      <p className="text-sm text-slate-600">Drop invoice image here or</p>
+                      <button className="mt-2 px-4 py-2 bg-primary-500 text-white text-sm font-medium rounded-lg hover:bg-primary-600 transition-colors">
+                        Browse Files
+                      </button>
+                    </div>
+                    {/* Scanned Result Preview */}
+                    <div className="bg-slate-50 rounded-xl p-4 space-y-2">
+                      <div className="flex justify-between items-center pb-2 border-b border-slate-200">
+                        <span className="text-xs text-slate-500">Supplier</span>
+                        <span className="text-sm font-medium text-slate-900">Tech Solutions Ltd</span>
+                      </div>
+                      <div className="flex justify-between items-center pb-2 border-b border-slate-200">
+                        <span className="text-xs text-slate-500">Invoice No.</span>
+                        <span className="text-sm font-medium text-slate-900">TS-2024-0892</span>
+                      </div>
+                      <div className="flex justify-between items-center pb-2 border-b border-slate-200">
+                        <span className="text-xs text-slate-500">GSTIN</span>
+                        <span className="text-sm font-medium text-slate-900">27AABCT1234A1Z5</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-xs text-slate-500">Amount</span>
+                        <span className="text-sm font-bold text-primary-600">₹24,500.00</span>
+                      </div>
+                    </div>
+                    <button className="w-full py-3 bg-gradient-to-r from-accent-500 to-accent-600 text-white font-medium rounded-xl hover:from-accent-600 hover:to-accent-700 transition-all">
+                      Save to Accounts
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section id="features" className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -269,57 +475,57 @@ export default function Home({ releases, latestVersion }) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <FeatureCard 
+              icon={Voice}
+              title="Voice Reconciliation"
+              description="Reconcile transactions using natural voice commands. Simply say 'Reconcile my bank statement' and let AI match transactions automatically across your accounts."
+              delay={100}
+            />
+            <FeatureCard 
+              icon={Scan}
+              title="Invoice Scanning"
+              description="Scan and digitize invoices instantly. Capture invoices via camera or upload documents, with automatic GST details extraction and seamless entry into your accounts."
+              delay={200}
+            />
+            <FeatureCard 
               icon={Mic}
               title="Voice-Controlled Entry"
               description="Forget typing. Just say 'Log expense ₹500 for lunch' and let AI handle the categorization and entry automatically."
-              delay={100}
+              delay={300}
             />
             <FeatureCard 
               icon={MessageSquare}
               title="Natural Language Queries"
               description="Ask questions like 'What's my profit this month?' or 'Who owes me money?' and get instant, accurate answers."
-              delay={200}
+              delay={400}
             />
             <FeatureCard 
               icon={Cpu}
               title="AI-Powered Insights"
               description="Get real-time business health scores, predictive analytics, and smart recommendations based on your data."
-              delay={300}
+              delay={500}
             />
             <FeatureCard 
               icon={FileText}
               title="GST Compliance"
               description="Automated GSTR-1 & GSTR-3B generation designed for Indian taxation standards. Export-ready reports."
-              delay={400}
+              delay={600}
             />
             <FeatureCard 
               icon={BarChart3}
               title="Instant Reports"
               description="Generate Profit & Loss, Balance Sheet, Cash Flow, and more in seconds with one click."
-              delay={500}
+              delay={700}
             />
             <FeatureCard 
               icon={Shield}
               title="Business Health Score"
               description="A single metric that tells you the financial stability of your business. Track improvement over time."
-              delay={600}
+              delay={800}
             />
             <FeatureCard 
               icon={AlertCircle}
               title="Smart Alerts"
               description="Get notified about low balances, overdue payments, GST deadlines, and unusual transactions."
-              delay={700}
-            />
-            <FeatureCard 
-              icon={TrendingUp}
-              title="Outstanding Tracking"
-              description="Track receivables and payables with aging analysis. Never miss a payment deadline again."
-              delay={800}
-            />
-            <FeatureCard 
-              icon={Clock}
-              title="Real-Time Sync"
-              description="All your data is synced instantly. Your accounts are always up-to-date across all views."
               delay={900}
             />
           </div>
@@ -505,7 +711,8 @@ export default function Home({ releases, latestVersion }) {
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2">
-                <li><a href="#features" className="text-slate-400 hover:text-white transition-colors">Features</a></li>
+                <li><a href="#core-features" className="text-slate-400 hover:text-white transition-colors">Core Features</a></li>
+                <li><a href="#features" className="text-slate-400 hover:text-white transition-colors">All Features</a></li>
                 <li><a href="#download" className="text-slate-400 hover:text-white transition-colors">Download</a></li>
                 <li><a href="https://github.com/jitenkr2030/Talk-to-Your-Accounts" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">Documentation</a></li>
                 <li><a href="https://github.com/jitenkr2030/Talk-to-Your-Accounts/releases" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">Releases</a></li>
