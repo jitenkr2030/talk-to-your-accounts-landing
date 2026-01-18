@@ -22,7 +22,7 @@ import {
   Scan,
   Check,
   Receipt,
-  Voice
+  Radio
 } from 'lucide-react';
 
 // Feature Card Component
@@ -331,7 +331,7 @@ export default function Home({ releases, latestVersion }) {
             </div>
             <div className="order-1 lg:order-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 rounded-lg text-primary-700 text-sm font-medium mb-4">
-                <Voice className="w-4 h-4" />
+                <Radio className="w-4 h-4" />
                 Voice Reconciliation
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
@@ -475,7 +475,7 @@ export default function Home({ releases, latestVersion }) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <FeatureCard 
-              icon={Voice}
+              icon={Radio}
               title="Voice Reconciliation"
               description="Reconcile transactions using natural voice commands. Simply say 'Reconcile my bank statement' and let AI match transactions automatically across your accounts."
               delay={100}
