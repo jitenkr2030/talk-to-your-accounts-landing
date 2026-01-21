@@ -748,7 +748,7 @@ export default function Home({ releases, latestVersion }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const response = await fetch('https://api.github.com/repos/jitenkr2030/Talk-to-Your-Accounts/releases/latest');
     
