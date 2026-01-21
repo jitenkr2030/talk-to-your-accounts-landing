@@ -95,6 +95,9 @@ export default function Home({ releases, latestVersion }) {
   const macUrl = getDownloadLink('.dmg');
   const linuxDebUrl = getDownloadLink('.deb');
   const linuxAppImageUrl = getDownloadLink('.appimage');
+  
+  // Fallback to GitHub releases page if no direct download
+  const githubReleasesUrl = 'https://github.com/jitenkr2030/Talk-to-Your-Accounts/releases/latest';
 
   // Check which platforms are available
   const platforms = {
@@ -556,11 +559,11 @@ export default function Home({ releases, latestVersion }) {
               <h3 className="text-xl font-bold text-slate-900 mb-2">Windows</h3>
               <p className="text-slate-500 text-sm mb-4">Windows 10/11 (64-bit)</p>
               <a
-                href={windowsUrl}
+                href={windowsUrl || 'https://github.com/jitenkr2030/Talk-to-Your-Accounts/releases'}
                 className="inline-flex items-center justify-center w-full gap-2 px-4 py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-colors"
               >
                 <Download className="w-4 h-4" />
-                Download .exe
+                {windowsUrl ? 'Download .exe' : 'View Releases'}
               </a>
             </div>
 
@@ -574,11 +577,11 @@ export default function Home({ releases, latestVersion }) {
               <h3 className="text-xl font-bold text-slate-900 mb-2">macOS</h3>
               <p className="text-slate-500 text-sm mb-4">Intel & Apple Silicon</p>
               <a
-                href={macUrl}
+                href={macUrl || 'https://github.com/jitenkr2030/Talk-to-Your-Accounts/releases'}
                 className="inline-flex items-center justify-center w-full gap-2 px-4 py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-colors"
               >
                 <Download className="w-4 h-4" />
-                Download .dmg
+                {macUrl ? 'Download .dmg' : 'View Releases'}
               </a>
             </div>
 
@@ -595,11 +598,11 @@ export default function Home({ releases, latestVersion }) {
               <h3 className="text-xl font-bold text-slate-900 mb-2">Linux</h3>
               <p className="text-slate-500 text-sm mb-4">Ubuntu, Debian, etc.</p>
               <a
-                href={linuxDebUrl}
+                href={linuxDebUrl || 'https://github.com/jitenkr2030/Talk-to-Your-Accounts/releases'}
                 className="inline-flex items-center justify-center w-full gap-2 px-4 py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-colors"
               >
                 <Download className="w-4 h-4" />
-                Download .deb
+                {linuxDebUrl ? 'Download .deb' : 'View Releases'}
               </a>
             </div>
 
@@ -613,11 +616,11 @@ export default function Home({ releases, latestVersion }) {
               <h3 className="text-xl font-bold text-slate-900 mb-2">Linux</h3>
               <p className="text-slate-500 text-sm mb-4">Any Distribution</p>
               <a
-                href={linuxAppImageUrl}
+                href={linuxAppImageUrl || 'https://github.com/jitenkr2030/Talk-to-Your-Accounts/releases'}
                 className="inline-flex items-center justify-center w-full gap-2 px-4 py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-colors"
               >
                 <Download className="w-4 h-4" />
-                Download .AppImage
+                {linuxAppImageUrl ? 'Download .AppImage' : 'View Releases'}
               </a>
             </div>
           </div>
